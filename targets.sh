@@ -6,7 +6,7 @@
 
 tls_lib="openssl" # choose tls library ( openssl wolfssl )
 
-openssl_libs=( -lssl -lcrypto -lpthread -ldl )
+openssl_libs=( -l:libssl.so.1.1 -l:libcrypto.so.1.1 -lpthread -ldl )
 #flags+=( -Wno-format -Wno-unused-result -Wunused-variable -Wreturn-type -Wunused-but-set-variable -Wformat -Wformat-security )
 
 declare -n tls_libs=${tls_lib}_libs # wolfssl_libs or openssl_libs
@@ -22,7 +22,7 @@ if [[ $tls_lib == "openssl" ]]; then
 	echo "The EPRI 2030.5 client requires OpenSSL version 1.1.0."
 	echo "openssl version -a"
 	echo $version
-	exit 0
+#	exit 0
     fi
 else
     se_core_flags=( -DWOLFSSL_TLS )
