@@ -141,7 +141,7 @@ compile () {
 	need_compile=1
     fi
     if (( $need_compile == 1 || $recompile == 1 )); then
-	cmd="$cc $c_flags -o $target_file $source $c_objs -L${prefix}/lib -I/${HOME_DIR}/openssl/include/ -I${HOME_DIR}/openssl/mips_build/include/ $c_libs"
+cmd="$cc $c_flags -o $target_file $source $c_objs -L${prefix}/lib -I${HOME_DIR}/openssl/include/ -I${SSL_INCLUDE_PATH} $c_libs"
 	echo $cmd; $cmd
     fi
 }
