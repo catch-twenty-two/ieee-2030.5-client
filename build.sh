@@ -10,10 +10,10 @@
 # change these for your host systems
 
 system="linux" # only linux supported in this version
-linux_host=${CC}
-linux_prefix=
-linux_cross_host=
-linux_cross_prefix=
+linux_host= # "mips-openwrt-linux"
+linux_prefix="/home/jimmy/Development/Sunpower/openssl-1.1.1-pre9/build_x86"
+linux_cross_host= # "mips-openwrt-linux-gcc"
+linux_cross_prefix= # "mips-openwrt-linux-"
 
 #---------------------------------------------------------
 
@@ -141,7 +141,7 @@ compile () {
 	need_compile=1
     fi
     if (( $need_compile == 1 || $recompile == 1 )); then
-	cmd="$cc $c_flags -o $target_file $source $c_objs -L${prefix}/lib $c_libs"
+	cmd="$cc $c_flags -o $target_file $source $c_objs -L${prefix}/lib -I/home/jimmy/Development/Sunpower/openssl-1.1.1-pre9/include/ -I/home/jimmy/Development/Sunpower/openssl-1.1.1-pre9/build_mips/include/ $c_libs"
 	echo $cmd; $cmd
     fi
 }
@@ -214,10 +214,8 @@ fi
 sys_flags=( ${flags[@]} )
 #echo ${sys_flags[@]}
 if [ -n "${!host}" ]; then
-    cc="${!host}"
-    #-${cc}
-    cpp="${!host}"
-    #-${cpp}
+    cc="${!host}-${cc}"
+    cpp="${!host}-${cpp}"
 fi
 if [[ $system == "win32" ]]; then
     cc="${cc}.exe"

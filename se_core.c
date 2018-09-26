@@ -27,3 +27,21 @@
 #include "se_discover.c"
 
 
+//#include "der_client.c"
+#include "client.c"
+#include "list_util.c"
+#include "time.c"
+#include "event.c"
+#include "hash.c"
+#include "resource.c"
+#include "retrieve.c"
+#include "schedule.c"
+#include "der.c"
+#include "query.c"
+
+//#include "settings.c"
+
+
+#include "metering.c"
+
+
