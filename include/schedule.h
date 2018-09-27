@@ -115,5 +115,7 @@ void update_schedule (Schedule *s);
 */
 void schedule_init (Schedule *s);
 
+void delete_blocks (Stub *event);
+
 /** @} */
 

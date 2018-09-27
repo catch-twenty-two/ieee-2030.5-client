@@ -1,6 +1,7 @@
 #pragma once
 
 #include "resource.h"
+#include "dnssd_client.h"
 
 // Copyright (c) 2018 Electric Power Research Institute, Inc.
 // author: Mark Slicker <mark.slicker@gmail.com>
@@ -136,6 +137,15 @@ typedef void (*DepFunc) (Stub *s);
     @param dep is a pointer to a DepFunc
  */
 int process_http (void *conn, DepFunc dep);
+void poll_resource (Stub *s);
+void remove_stub (Stub *s);
+void get_seq (Stub *s, int offset, int count);
+void *get_subordinate (Stub *s, int type);
+Stub *new_dep (Stub *r, Stub *d, int flag);
+void delete_stub (Stub *s);
+Stub *get_dcap (Service *s, int secure);
+Stub *get_path (Service *s, int secure);
+void cleanup_http (void *conn);
 
 /** @} */
 
